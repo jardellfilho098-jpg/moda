@@ -61,13 +61,13 @@ create policy "admin modify settings" on public.store_settings for all to authen
  with check (exists(select 1 from public.admin_profiles a where a.user_id=(select auth.uid())));
 
 create policy "public active products or admin" on public.products for select to anon,authenticated
- using (active or exists(select 1 from public.admin_profiles a where a.user_id=(select auth.uid()))));
+ using (active or exists(select 1 from public.admin_profiles a where a.user_id=(select auth.uid())));
 create policy "admin modify products" on public.products for all to authenticated
  using (exists(select 1 from public.admin_profiles a where a.user_id=(select auth.uid())))
  with check (exists(select 1 from public.admin_profiles a where a.user_id=(select auth.uid())));
 
 create policy "public active banners or admin" on public.banners for select to anon,authenticated
- using (active or exists(select 1 from public.admin_profiles a where a.user_id=(select auth.uid()))));
+ using (active or exists(select 1 from public.admin_profiles a where a.user_id=(select auth.uid())));
 create policy "admin modify banners" on public.banners for all to authenticated
  using (exists(select 1 from public.admin_profiles a where a.user_id=(select auth.uid())))
  with check (exists(select 1 from public.admin_profiles a where a.user_id=(select auth.uid())));
