@@ -83,3 +83,12 @@ html,body,#root{width:100%;max-width:100%}
  .sort-label select{max-width:105px}
  .banner-row{min-width:0;flex-wrap:wrap}
 }
+
+/* Escolha de cor no modal de produto */
+.color-options{flex-wrap:wrap;max-width:100%;gap:8px}
+.color-options button{display:inline-flex;align-items:center;gap:8px;min-height:37px;white-space:nowrap}
+.color-options button.active{background:#111;color:#fff;border-color:#111}
+.color-options button:disabled,.options button:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.color-dot{width:16px;height:16px;display:inline-block;flex-shrink:0;border-radius:50%;border:1px solid #bbb;box-shadow:0 0 0 1px #ffffff50}
+.modal-product-info label strong{font-weight:700;margin-left:5px}
+@media(max-width:420px){.color-options button{font-size:12px;padding:9px 10px}.modal-product-info{padding:25px 19px}}
