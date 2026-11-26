@@ -14,16 +14,16 @@ export const bannersSeed:Banner[]=[
 {id:'b3',title:'A beleza dos\ndetalhes.',subtitle:'Elegância, conforto e personalidade em cada escolha.',image:'https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1600',button:'Conhecer peças',link:'#colecao',active:true,sort:2}
 ];
 const img=(id:string)=>`https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=850`;
-function variants(id:string):Variant[]{return ['P','M','G'].map((size,i)=>({id:id+'-'+size,size,color:'Padrão',stock:[5,8,3][i]}))}
+function variants(id:string,colors:string[]):Variant[]{return ['P','M','G'].flatMap((size,i)=>colors.map((color,j)=>({id:id+'-'+size+(j?'-'+j:''),size,color,stock:j?3:[5,8,3][i]})))}
 export const productsSeed:Product[]=[
-{id:'p1',name:'Vestido Midi Elegante',description:'Vestido midi versátil com caimento refinado, ideal para diferentes ocasiões.',price:149.9,category:'Vestidos',images:[img('1488463')],variants:variants('p1'),featured:true,active:true,createdAt:'2026-10-10'},
-{id:'p2',name:'Conjunto Alfaiataria',description:'Conjunto com acabamento sofisticado e silhueta contemporânea.',price:259.9,category:'Conjuntos',images:[img('1536619')],variants:variants('p2'),newArrival:true,active:true,createdAt:'2026-10-16'},
-{id:'p3',name:'Blusa Clássica',description:'Blusa leve que combina com composições casuais e formais.',price:129.9,category:'Blusas',images:[img('1488463')],variants:variants('p3'),active:true,createdAt:'2026-10-12'},
-{id:'p4',name:'Calça Jeans Reta',description:'Jeans de corte reto para um visual contemporâneo e confortável.',price:179.9,category:'Calças',images:[img('1598507')],variants:variants('p4'),newArrival:true,active:true,createdAt:'2026-10-18'},
-{id:'p5',name:'Vestido Casual Bege',description:'Vestido leve com detalhes delicados para o dia a dia.',price:189.9,category:'Vestidos',images:[img('1183266')],variants:variants('p5'),active:true,createdAt:'2026-10-14'},
-{id:'p6',name:'Blazer Essencial',description:'Peça coringa para criar looks elegantes e atemporais.',price:229.9,category:'Conjuntos',images:[img('1536619')],variants:variants('p6'),active:true,createdAt:'2026-10-11'},
-{id:'p7',name:'Blusa Texturizada',description:'Textura sutil, visual delicado e modelagem confortável.',price:109.9,category:'Blusas',images:[img('1488463')],variants:variants('p7'),active:true,createdAt:'2026-10-13'},
-{id:'p8',name:'Bolsa Minimalista',description:'Acessório prático com acabamento clean.',price:119.9,category:'Acessórios',images:[img('1152077')],variants:[{id:'p8-unico',size:'Único',color:'Padrão',stock:7}],active:true,createdAt:'2026-10-08'}
+{id:'p1',name:'Vestido Midi Elegante',description:'Vestido midi versátil com caimento refinado, ideal para diferentes ocasiões.',price:149.9,category:'Vestidos',images:[img('1488463')],variants:variants('p1',["Preto","Bege"]),featured:true,active:true,createdAt:'2026-10-10'},
+{id:'p2',name:'Conjunto Alfaiataria',description:'Conjunto com acabamento sofisticado e silhueta contemporânea.',price:259.9,category:'Conjuntos',images:[img('1536619')],variants:variants('p2',["Bege","Preto"]),newArrival:true,active:true,createdAt:'2026-10-16'},
+{id:'p3',name:'Blusa Clássica',description:'Blusa leve que combina com composições casuais e formais.',price:129.9,category:'Blusas',images:[img('1488463')],variants:variants('p3',["Branco","Preto"]),active:true,createdAt:'2026-10-12'},
+{id:'p4',name:'Calça Jeans Reta',description:'Jeans de corte reto para um visual contemporâneo e confortável.',price:179.9,category:'Calças',images:[img('1598507')],variants:variants('p4',["Azul","Preto"]),newArrival:true,active:true,createdAt:'2026-10-18'},
+{id:'p5',name:'Vestido Casual Bege',description:'Vestido leve com detalhes delicados para o dia a dia.',price:189.9,category:'Vestidos',images:[img('1183266')],variants:variants('p5',["Bege","Branco"]),active:true,createdAt:'2026-10-14'},
+{id:'p6',name:'Blazer Essencial',description:'Peça coringa para criar looks elegantes e atemporais.',price:229.9,category:'Conjuntos',images:[img('1536619')],variants:variants('p6',["Bege","Preto"]),active:true,createdAt:'2026-10-11'},
+{id:'p7',name:'Blusa Texturizada',description:'Textura sutil, visual delicado e modelagem confortável.',price:109.9,category:'Blusas',images:[img('1488463')],variants:variants('p7',["Branco","Rosa"]),active:true,createdAt:'2026-10-13'},
+{id:'p8',name:'Bolsa Minimalista',description:'Acessório prático com acabamento clean.',price:119.9,category:'Acessórios',images:[img('1152077')],variants:[{id:'p8-unico',size:'Único',color:'Preto',stock:7},{id:'p8-unico-1',size:'Único',color:'Marrom',stock:4}],active:true,createdAt:'2026-10-08'}
 ];
 export const categories:Category[]=['Vestidos','Blusas','Calças','Conjuntos','Acessórios'];
 export const statuses:Record<OrderStatus,string>={aguardando_confirmacao:'Aguardando confirmação',confirmado:'Confirmado',em_separacao:'Em separação',pronto_retirada:'Pronto para retirada',saiu_entrega:'Saiu para entrega',concluido:'Concluído',cancelado:'Cancelado'};
